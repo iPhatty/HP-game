@@ -11,6 +11,7 @@ test('form component', () => {
 
   const button = getByText('Submit');
   const input = getByLabelText('Enter your GitHub Username:');
+
   input.value = 'helenzhou6';
   fireEvent.change(input);
   fireEvent.click(button);

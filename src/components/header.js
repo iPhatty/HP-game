@@ -1,9 +1,7 @@
 import React from "react";
-import '../../public/style.css';
 import Game from "./game/game";
 
 export const Header = props => {
-  console.log(props);
   const { avatar_url, html_url, name, followers, repos_url, login } = props.data;
   return (
     <div className="card">
