@@ -63,3 +63,4 @@ config.env
 
 .cache
 dist
+token.js

@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import "sanitize.css/sanitize.css";
+
+import App from "./components/app";
 
 ReactDOM.render(
-  <div>Hello World</div>,
+  <App />,
   document.getElementById('root')
 );
