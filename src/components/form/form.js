@@ -24,7 +24,7 @@ export default class Form extends React.Component {
   render() {
     const { input, userData } = this.state;
     if (this.state.userData === '') {
-      return (<section id="section-form">
+      return (<section id="section-form" className="card">
         <form onSubmit={this.getUserData}>
           <label htmlFor="username-input">
             Enter your GitHub Username:
