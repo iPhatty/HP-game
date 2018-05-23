@@ -1,6 +1,7 @@
 import React from "react";
 import { Header } from '../header'
 import { getUserData } from "../../utilities/getUserData";
+import fetchMock from 'fetch-mock';
 
 export default class Form extends React.Component {
   constructor(props) {
@@ -15,7 +16,6 @@ export default class Form extends React.Component {
     e.preventDefault();
     getUserData(`https://api.github.com/users/${this.state.input}`)
       .then(data => {
-        console.log(data);
         this.setState({ userData: data });
       });
   }
@@ -45,10 +45,10 @@ export default class Form extends React.Component {
     }
     return (
       <React.Fragment>
-        <div class="card">
+        <div className="card">
           <button onClick={this.logout}>Log Out</button>
         </div>
-        {userData && <Header data-testid="userData" data={userData} />}
+        {userData && <Header data={userData} />}
       </React.Fragment>
 
     )
