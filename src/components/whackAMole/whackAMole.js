@@ -48,6 +48,7 @@ export default class WhackAMole extends React.Component {
         time: 0,
       };
     });
+    this.startGame();
   };
 
   render() {
@@ -65,7 +66,7 @@ export default class WhackAMole extends React.Component {
       );
     } else if (this.state.phase === "running") {
       const moleArray = [];
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 9; i++) {
         moleArray.push(<Mole
           avatarUrl={this.props.avatarUrl}
           incFunction={this.incScore}
@@ -75,14 +76,23 @@ export default class WhackAMole extends React.Component {
       }
       return (
         <React.Fragment>
-          {moleArray}
+          <h3>Whack a mole</h3>
+          <p>Your face is the mole!</p>
+          <p>Try and whack it as many times as you can!</p>
+          <p>You get +1 point for hitting and -1 point for missing</p>
+          <div className="moles">{moleArray}</div>
           <p>SCORE: {this.state.score}</p>
         </React.Fragment>
       );
     } else if (this.state.phase === "result") {
       return (
         <React.Fragment>
-          <button onClick={this.restart}>Play Again</button>
+          <h3>Whack a mole</h3>
+          <p>Your face is the mole!</p>
+          <p>Try and whack it as many times as you can!</p>
+          <p>You get +1 point for hitting and -1 point for missing</p>
+          <h4>Your score: {this.state.score}</h4>
+          <button onClick={this.restart}>Play Again?</button>
         </React.Fragment>
       );
     }

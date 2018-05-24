@@ -1,5 +1,5 @@
 import React from "react";
-import { Header } from '../header'
+import { UserCard } from '../userCard/userCard'
 import { getUserData } from "../../utilities/getUserData";
 
 
@@ -27,10 +27,10 @@ export default class Form extends React.Component {
   render() {
     const { input, userData } = this.state;
     if (this.state.userData === '') {
-      return (<section id="section-form" className="card">
+      return (<section id="section-form">
         <form onSubmit={this.getUserData}>
           <label htmlFor="username-input">
-            Enter your GitHub Username:
+            Enter any GitHub Username:
             <br />
             <input id="username-input" value={input} onChange={e => this.setState({ input: e.target.value })} />
           </label>
@@ -45,10 +45,8 @@ export default class Form extends React.Component {
     }
     return (
       <React.Fragment>
-        <div className="card">
-          <button onClick={this.logout}>Log Out</button>
-        </div>
-        {userData && <Header data={userData} />}
+        <button onClick={this.logout}>Log Out</button>
+        {userData && <UserCard data={userData} />}
       </React.Fragment>
 
     )
