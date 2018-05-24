@@ -4,7 +4,8 @@ import "../../public/style.css";
 
 export default class App extends React.Component {
   render() {
-    return <div>
+    return <div className="card">
+      <h1>React game arcade!</h1>
       <Form />
     </div>;
   }
