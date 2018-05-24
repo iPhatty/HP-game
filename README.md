@@ -5,12 +5,12 @@
 Phat and Helen bring you... a game!
 
 * To Do:
-- [ ] Let you submit a username
-- [ ] Query the [Github API](https://developer.github.com/v3/) (or any other [fun one](https://www.potterapi.com/) you like
-- [ ] Populate a UI with the user details
-- [ ] Have some form of persistent state and interactivity
+- [x] Let you submit a username
+- [x] Query the [Github API](https://developer.github.com/v3/)
+- [x] Populate a UI with the user details
+- [x] Have some form of persistent state and interactivity
 - [ ] Have integration tests! (and units tests if they're relevant)
 
 * Try to:
-- [ ] Write modular code: one component per file
+- [x] Write modular code: one component per file
 - [ ] Separate your container logic from presentational components
