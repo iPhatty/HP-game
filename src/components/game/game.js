@@ -11,12 +11,13 @@ export default class Game extends React.Component {
   }
 
   toggle = () => {
-    this.setState((prevState) => {
-      if (this.state.phase === 'running') {
+    const {phase, time} = this.state;
+    this.setState(() => {
+      if (phase === 'running') {
         clearInterval(this.timer);
         return { phase: 'result' }
-      } else if (this.state.phase === 'start') {
-        const startTime = Date.now() - this.state.time;
+      } else if (phase === 'start') {
+        const startTime = Date.now() - time;
         this.timer = setInterval(() => {
           this.setState({ time: Date.now() - startTime })
         })
@@ -25,7 +26,7 @@ export default class Game extends React.Component {
     })
   }
   restart = () => {
-    this.setState((prevState) => {
+    this.setState(() => {
       return {
         time: 0,
         phase: 'start'

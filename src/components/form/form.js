@@ -1,7 +1,7 @@
 import React from "react";
 import { Header } from '../header'
 import { getUserData } from "../../utilities/getUserData";
-import fetchMock from 'fetch-mock';
+
 
 export default class Form extends React.Component {
   constructor(props) {
