@@ -57,7 +57,7 @@ export default class TimeGame extends React.Component {
       }
       return (
         <React.Fragment>
-          <h3>{message}</h3>
+          <h3 data-testid="message">{message}</h3>
           <button onClick={this.restart}>Try again?</button>
         </React.Fragment>
       )

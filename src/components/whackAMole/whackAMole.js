@@ -81,7 +81,7 @@ export default class WhackAMole extends React.Component {
           <p>Try and whack it as many times as you can!</p>
           <p>You get +1 point for hitting and -1 point for missing</p>
           <div className="moles">{moleArray}</div>
-          <p>SCORE: {this.state.score}</p>
+          <h4>Your score: {this.state.score}</h4>
         </React.Fragment>
       );
     } else if (this.state.phase === "result") {
