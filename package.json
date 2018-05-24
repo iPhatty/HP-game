@@ -41,5 +41,11 @@
     "env2": "^2.2.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less|sass|scss)$": "<rootDir>/__mocks__/styleMock.js",
+      "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
+    }
   }
 }
