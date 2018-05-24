@@ -18,15 +18,16 @@ export default class Mole extends React.Component {
     this.setState(() => {
       const startTime = Date.now() - time;
       this.timer = setInterval(() => {
+        const { time } = this.state;
         this.setState({ time: Date.now() - startTime });
         if (
-          this.state.time < this.targetTime &&
-          this.targetTime < this.state.time + this.timeLimit
+          time < this.targetTime &&
+          this.targetTime < time + this.timeLimit
         ) {
           this.setState({ status: "HIT ME!" });
-        } else if (this.state.time < this.targetTime){
+        } else if (time < this.targetTime) {
           this.setState({ status: "Wait..." });
-        } else { 
+        } else {
           this.restart();
         }
       });
@@ -35,13 +36,13 @@ export default class Mole extends React.Component {
 
   restart = () => {
     clearInterval(this.timer);
-    this.setState({ 
+    this.setState({
       time: 0,
       status: "Wait...",
     });
     this.startGame();
   }
-  
+
   UNSAFE_componentWillMount() {
     this.startGame();
   }
@@ -54,21 +55,21 @@ export default class Mole extends React.Component {
     const { status } = this.state;
     const { avatarUrl, incFunction, decFunction } = this.props;
 
-      if (status === 'HIT ME!') {
-        return (
-          <React.Fragment>
-            <div className="block">
-              <img onClick={incFunction} className="avatar" src={avatarUrl}></img>
-            </div>
-          </React.Fragment>
-        )
-      } else {
-        return (
-          <React.Fragment>
-            <div onClick={decFunction} className="block"></div>
-          </React.Fragment>
-        )
-      }
+    if (status === 'HIT ME!') {
+      return (
+        <React.Fragment>
+          <div className="block">
+            <img onClick={incFunction} className="avatar" src={avatarUrl}></img>
+          </div>
+        </React.Fragment>
+      )
+    } else {
+      return (
+        <React.Fragment>
+          <div onClick={decFunction} className="block"></div>
+        </React.Fragment>
+      )
+    }
 
-    } 
+  }
 }
