@@ -19,10 +19,8 @@ export default class GameTwo extends React.Component {
           this.state.time < this.targetTime &&
           this.targetTime < this.state.time + 1000
         ) {
-          console.log('hit ',this.state.hit)
           return {hit: prevState.hit + 1}
         } else {
-          console.log('miss ',this.state.miss)
           return {miss: prevState.miss + 1}
         }
         // clearInterval(this.timer);
@@ -56,7 +54,7 @@ export default class GameTwo extends React.Component {
   };
 
   render() {
-    const { phase, time } = this.state;
+    const { phase, time, hit, miss } = this.state;
 
     if (phase !== "result") {
       return (
@@ -65,6 +63,7 @@ export default class GameTwo extends React.Component {
           <button onClick={this.toggle}>
             {phase === "start" ? "Start" : this.state.status}
           </button>
+          <span>Hits: {hit}</span><span>Misses: {miss}</span>
         </React.Fragment>
       );
     } else {

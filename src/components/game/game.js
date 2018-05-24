@@ -11,12 +11,13 @@ export default class Game extends React.Component {
   }
 
   toggle = () => {
+    const {phase, time} = this.state;
     this.setState(() => {
-      if (this.state.phase === 'running') {
+      if (phase === 'running') {
         clearInterval(this.timer);
         return { phase: 'result' }
-      } else if (this.state.phase === 'start') {
-        const startTime = Date.now() - this.state.time;
+      } else if (phase === 'start') {
+        const startTime = Date.now() - time;
         this.timer = setInterval(() => {
           this.setState({ time: Date.now() - startTime })
         })
