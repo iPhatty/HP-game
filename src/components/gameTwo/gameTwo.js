@@ -8,33 +8,33 @@ export default class GameTwo extends React.Component {
       phase: "start",
       status: "Wait...",
       hit: 0,
-      miss: 0,
+      miss: 0
     };
   }
-  targetTime = 2000;
+  targetTime = Math.floor(Math.random() * 5000) + 1000; // Random number between 1 second & 5 seconds
+  timeLimit = 500;
+  
   toggle = () => {
-    this.setState((prevState) => {
-      if (this.state.phase === "running") {
-        if (
-          this.state.time < this.targetTime &&
-          this.targetTime < this.state.time + 1000
-        ) {
-          return {hit: prevState.hit + 1}
+    const { phase, time } = this.state;
+    this.setState(prevState => {
+      if (phase === "running") {
+        if (time < this.targetTime && this.targetTime < time + this.timeLimit) {
+          return { hit: prevState.hit + 1 };
         } else {
-          return {miss: prevState.miss + 1}
+          return { miss: prevState.miss + 1 };
         }
-        // clearInterval(this.timer);
-        // return { phase: 'result' }
-      } else if (this.state.phase === "start") {
-        const startTime = Date.now() - this.state.time;
+      } else if (phase === "start") {
+        const startTime = Date.now() - time;
 
         this.timer = setInterval(() => {
           this.setState({ time: Date.now() - startTime });
           if (
             this.state.time < this.targetTime &&
-            this.targetTime < this.state.time + 1000
+            this.targetTime < this.state.time + this.timeLimit
           ) {
             this.setState({ status: "HIT ME!" });
+          } else if (this.state.time > this.targetTime + 2000) {
+            this.setState({ status: "Game Over...", phase: "result" });
           } else {
             this.setState({ status: "Wait..." });
           }
@@ -44,17 +44,20 @@ export default class GameTwo extends React.Component {
     });
   };
   restart = () => {
+    clearInterval(this.timer);
     this.setState(() => {
       return {
         time: 0,
         phase: "start",
-        status: "Wait..."
+        status: "Wait...",
+        hit: 0,
+        miss: 0
       };
     });
   };
 
   render() {
-    const { phase, time, hit, miss } = this.state;
+    const { phase, hit, miss } = this.state;
 
     if (phase !== "result") {
       return (
@@ -63,23 +66,17 @@ export default class GameTwo extends React.Component {
           <button onClick={this.toggle}>
             {phase === "start" ? "Start" : this.state.status}
           </button>
-          <span>Hits: {hit}</span><span>Misses: {miss}</span>
+          <span>Hits: {hit}</span>
+          <span>Misses: {miss}</span>
         </React.Fragment>
       );
     } else {
-      const targetTime = 10;
-      const newTime = Math.round((time / 1000 - targetTime) * 10) / 10;
-      let message = "";
-      if (newTime == 0) {
-        message = "WOW you got it spot on!";
-      } else if (newTime > 0) {
-        message = `You went ${newTime} seconds over`;
-      } else {
-        message = `You went ${newTime * -1} seconds under`;
-      }
       return (
         <React.Fragment>
-          <h3>{message}</h3>
+          <h3>Game Over</h3>
+          <p>You got...</p>
+          <span>Hits: {hit}</span>
+          <span>Misses: {miss}</span>
           <button onClick={this.restart}>Try again?</button>
         </React.Fragment>
       );
