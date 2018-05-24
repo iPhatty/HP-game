@@ -10,8 +10,8 @@ export default class Mole extends React.Component {
     };
   }
 
-  targetTime = Math.floor(Math.random() * 5000) + 1000; // Random number between 1 second & 5 seconds
-  timeLimit = 800;
+  targetTime = Math.floor(Math.random() * 10000) + 1000; // Random number between 1 second & 10 seconds
+  timeLimit = Math.floor(Math.random() * 1000) + 500; // Random number between 500ms & 1 second
 
   startGame = () => {
     const { time } = this.state;
@@ -24,11 +24,22 @@ export default class Mole extends React.Component {
           this.targetTime < this.state.time + this.timeLimit
         ) {
           this.setState({ status: "HIT ME!" });
-        } else {
+        } else if (this.state.time < this.targetTime){
           this.setState({ status: "Wait..." });
+        } else { 
+          this.restart();
         }
       });
     })
+  }
+
+  restart = () => {
+    clearInterval(this.timer);
+    this.setState({ 
+      time: 0,
+      status: "Wait...",
+    });
+    this.startGame();
   }
   
   UNSAFE_componentWillMount() {
