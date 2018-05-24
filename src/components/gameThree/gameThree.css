@@ -1,0 +1,10 @@
+.block {
+  display: block;
+  width: 5rem;
+  height: 5rem;
+  background-color: red;
+}
+
+.avatar {
+  width: 100%;
+}
