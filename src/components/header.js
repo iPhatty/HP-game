@@ -1,7 +1,6 @@
 import React from "react";
-import Game from "./game/game";
-import GameTwo from "./gameTwo/gameTwo";
-import GameFour from "./gameFour/gameFour";
+import TimeGame from "./timeGame/timeGame";
+import WhackAMole from "./whackAMole/whackAMole";
 
 
 export const Header = props => {
@@ -9,11 +8,9 @@ export const Header = props => {
   return (
     <div className="card">
       <h1 data-testid="userData">Hello <a href={html_url}>{login}!</a></h1>
-      <Game />
+      <TimeGame />
       <br />
-      <GameTwo />
-      <br />
-      <GameFour avatarUrl={avatar_url} />
+      <WhackAMole avatarUrl={avatar_url} />
     </div>
   );
 }
