@@ -1,7 +1,7 @@
 import React from "react";
 import Game from "./game/game";
 import GameTwo from "./gameTwo/gameTwo";
-import GameThree from "./gameThree/gameThree";
+import GameFour from "./gameFour/gameFour";
 
 
 export const Header = props => {
@@ -13,7 +13,7 @@ export const Header = props => {
       <br />
       <GameTwo />
       <br />
-      <GameThree avatarUrl={avatar_url} />
+      <GameFour avatarUrl={avatar_url} />
     </div>
   );
 }
