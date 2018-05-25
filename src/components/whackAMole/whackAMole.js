@@ -86,9 +86,11 @@ export default class WhackAMole extends React.Component {
       return (
         <React.Fragment>
           <h3>Whack a mole</h3>
+          <div className="moleDesc">
           <p>Your face is the mole!</p>
           <p>Try and whack it as many times as you can!</p>
           <p>You get +1 point for hitting and -1 point for missing</p>
+          </div>
           <div className="moles">{moleArray}</div>
           <h4>Your score: {this.state.score}</h4>
         </React.Fragment>
@@ -97,9 +99,11 @@ export default class WhackAMole extends React.Component {
       return (
         <React.Fragment>
           <h3>Whack a mole</h3>
+          <div className="moleDesc">
           <p>Your face is the mole!</p>
           <p>Try and whack it as many times as you can!</p>
           <p>You get +1 point for hitting and -1 point for missing</p>
+          </div>
           <h4>Your score: {this.state.score}</h4>
           <button onClick={this.restart}>Play Again?</button>
         </React.Fragment>

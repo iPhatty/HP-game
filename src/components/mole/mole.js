@@ -72,7 +72,7 @@ export default class Mole extends React.Component {
     } else {
       return (
         <React.Fragment>
-          <div className="block" />
+          <div className="block">&nbsp;</div>
         </React.Fragment>
       );
     }
