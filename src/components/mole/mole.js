@@ -43,7 +43,7 @@ export default class Mole extends React.Component {
     this.startGame();
   }
 
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     this.startGame();
   }
 
