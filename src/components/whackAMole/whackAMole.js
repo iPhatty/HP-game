@@ -32,9 +32,9 @@ export default class WhackAMole extends React.Component {
     });
   }
 
-  decScore(e) {
-    e.preventDefault();
-    this.setState(prevState => {
+  decScore() {
+    // e.preventDefault();
+      return this.setState(prevState => {
       return { score: prevState.score - 1 };
     });
   }
