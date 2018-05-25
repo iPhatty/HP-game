@@ -56,9 +56,11 @@ export default class WhackAMole extends React.Component {
       return (
         <React.Fragment>
           <h3>Whack a mole</h3>
+          <div className="moleDesc">
           <p>Your face is the mole!</p>
           <p>Try and whack it as many times as you can!</p>
           <p>You get +1 point for hitting and -1 point for missing</p>
+          </div>
           <button onClick={this.startGame}>Start</button>
         </React.Fragment>
       );
