@@ -1,5 +1,7 @@
 # HP-game
 
+[Game Link](https://relaxed-wing-98fffd.netlify.com/) - Note, the game is currently designed for mobile and does not appear properly on desktop!
+
 [The Project outline](https://github.com/oliverjam/fac-react-project/blob/master/README.md)
 
 Phat and Helen bring you... a game!
