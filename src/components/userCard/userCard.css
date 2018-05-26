@@ -1,0 +1,13 @@
+.userCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.userCard p {
+    margin: 4px 0;
+}
+
+.moleDesc :last-child {
+    margin-bottom: 1rem;
+}

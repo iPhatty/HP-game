@@ -1,7 +1,7 @@
 .block {
   display: block;
-  width: 5rem;
-  height: 5rem;
+  width: 25vw;
+  height: 25vw;
   border-radius: 50%;
   background-color: brown;
 }

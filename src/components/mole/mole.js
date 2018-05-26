@@ -6,44 +6,45 @@ export default class Mole extends React.Component {
     super(props);
     this.state = {
       time: 0,
-      status: "Wait...",
+      status: "Wait..."
     };
   }
 
-  targetTime = Math.floor(Math.random() * 10000) + 1000; // Random number between 1 second & 10 seconds
-  timeLimit = Math.floor(Math.random() * 1000) + 500; // Random number between 500ms & 1 second
+  decScore = () => {
+    this.props.decFunction();
+  }
 
   startGame = () => {
+    const targetTime = Math.floor(Math.random() * 10000) + 1000; // Random number between 1 second & 10 seconds
+    const timeLimit = Math.floor(Math.random() * 1000) + 500; // Random number between 500ms & 1 second
+
     const { time } = this.state;
     this.setState(() => {
       const startTime = Date.now() - time;
       this.timer = setInterval(() => {
         const { time } = this.state;
         this.setState({ time: Date.now() - startTime });
-        if (
-          time < this.targetTime &&
-          this.targetTime < time + this.timeLimit
-        ) {
+        if (time < targetTime && targetTime < time + timeLimit) {
           this.setState({ status: "HIT ME!" });
-        } else if (time < this.targetTime) {
-          this.setState({ status: "Wait..." });
-        } else {
+        } else if (time > targetTime + timeLimit) {
+          // this.setState({ status: "Wait..." });
+          this.decScore();
           this.restart();
         }
       });
-    })
-  }
+    });
+  };
 
   restart = () => {
     clearInterval(this.timer);
     this.setState({
       time: 0,
-      status: "Wait...",
+      status: "Wait..."
     });
     this.startGame();
-  }
+  };
 
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     this.startGame();
   }
 
@@ -51,25 +52,29 @@ export default class Mole extends React.Component {
     clearInterval(this.timer);
   }
 
+  onClick = e => {
+    this.props.incFunction(e);
+    this.restart();
+  };
+
   render() {
     const { status } = this.state;
-    const { avatarUrl, incFunction, decFunction } = this.props;
+    const { avatarUrl } = this.props;
 
-    if (status === 'HIT ME!') {
+    if (status === "HIT ME!") {
       return (
         <React.Fragment>
           <div className="block">
-            <img onClick={incFunction} className="avatar" src={avatarUrl}></img>
+            <img onClick={this.onClick} className="avatar" src={avatarUrl} />
           </div>
         </React.Fragment>
-      )
+      );
     } else {
       return (
         <React.Fragment>
-          <div onClick={decFunction} className="block"></div>
+          <div className="block">&nbsp;</div>
         </React.Fragment>
-      )
+      );
     }
-
   }
 }

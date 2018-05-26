@@ -5,11 +5,14 @@ import "./userCard.css";
 
 export const UserCard = props => {
   const { avatar_url, html_url, login } = props.data;
+
+
+
   return (
-    <div>
+    <div className="userCard">
       <h3 data-testid="userData">Hello <a href={html_url}>{login}!</a></h3>
       <TimeGame />
-      <br />
+      
       <WhackAMole avatarUrl={avatar_url} />
     </div>
   );
